@@ -29,14 +29,15 @@
   delegate_to: "{{ groups['kube_control_plane'][0] }}"
   run_once: true
 
-- name: Calculate kubeadm CA cert hash
-  shell: |
-    set -o pipefail && openssl x509 -pubkey -in {{ kube_cert_dir }}/ca.crt | \
-    openssl {% if 'RSA' in kube_asymmetric_encryption_algorithm %}rsa{% elif 'ECDSA' in kube_asymmetric_encryption_algorithm %}ec{% else %}rsa{% endif %} -pubin -outform der 2>/dev/null | \
-    openssl dgst -sha256 -hex | sed 's/^.* //'
-  args:
-    executable: /bin/bash
-  register: kubeadm_ca_hash
+- name: Extract public key from CA certificate
+  community.crypto.openssl_publickey_info:
+    path: "{{ kube_cert_dir }}/ca.crt"
+    type: x509
+  register: publickey_info
+
+- name: Generate hash from public key
+  set_fact:
+    kubeadm_ca_hash: "{{ publickey_info.publickey | hash('sha256') }}"
   when:
     - kubeadm_ca_stat.stat is defined
     - kubeadm_ca_stat.stat.exists
