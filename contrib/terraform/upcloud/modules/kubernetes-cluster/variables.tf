@@ -6,14 +6,6 @@ variable "zone" {
   type = string
 }
 
-variable "private_cloud" {
-  type = bool
-}
-
-variable "public_zone" {
-  type = string
-}
-
 variable "template_name" {}
 
 variable "username" {}
@@ -28,7 +20,6 @@ variable "machines" {
     cpu       = string
     mem       = string
     disk_size = number
-    server_group : string
     additional_disks = map(object({
       size = number
       tier = string
@@ -113,5 +104,6 @@ variable "server_groups" {
 
   type = map(object({
     anti_affinity_policy = string
+    servers              = list(string)
   }))
 }

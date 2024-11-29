@@ -1,9 +1,9 @@
 ---
 - name: Cri-dockerd | reload systemd
-  systemd_service:
+  systemd:
     name: cri-dockerd
     daemon_reload: true
-    masked: false
+    masked: no
   listen: Restart and enable cri-dockerd
 
 - name: Cri-dockerd | restart docker.service
@@ -27,5 +27,5 @@
 - name: Cri-dockerd | enable cri-dockerd service
   service:
     name: cri-dockerd.service
-    enabled: true
+    enabled: yes
   listen: Restart and enable cri-dockerd

@@ -1,3 +1,1 @@
----
-- name: Import Centos boostrap for openEuler
-  import_tasks: centos.yml
+centos.yml

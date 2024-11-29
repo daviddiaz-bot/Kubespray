@@ -3,7 +3,7 @@
   service:
     name: calico-rr
     state: stopped
-    enabled: false
+    enabled: no
   failed_when: false
 
 - name: Calico-rr | Delete obsolete files

@@ -37,7 +37,7 @@ spec:
                 fieldRef:
                   fieldPath: spec.nodeName
           args:
-            - "-v={{ netchecker_agent_log_level }}"
+            - "-v=5"
             - "-alsologtostderr=true"
             - "-serverendpoint=netchecker-service:8081"
             - "-reportinterval={{ agent_report_interval }}"

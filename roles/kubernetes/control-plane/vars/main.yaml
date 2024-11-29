@@ -1,8 +1,3 @@
 ---
 # list of admission plugins that needs to be configured
-# https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
-kube_apiserver_admission_plugins_needs_configuration:
-- EventRateLimit
-- ImagePolicyWebhook
-- PodSecurity
-- PodNodeSelector
+kube_apiserver_admission_plugins_needs_configuration: [EventRateLimit, PodSecurity]

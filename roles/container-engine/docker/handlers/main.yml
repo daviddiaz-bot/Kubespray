@@ -1,9 +1,9 @@
 ---
 - name: Docker | reload systemd
-  systemd_service:
+  systemd:
     name: docker
     daemon_reload: true
-    masked: false
+    masked: no
   listen: Restart docker
 
 - name: Docker | reload docker.socket

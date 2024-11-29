@@ -7,7 +7,7 @@
   blockinfile:
     path: "{{ dhclientconffile }}"
     state: absent
-    backup: true
+    backup: yes
     marker: "# Ansible entries {mark}"
   notify: Preinstall | propagate resolvconf to k8s components
 

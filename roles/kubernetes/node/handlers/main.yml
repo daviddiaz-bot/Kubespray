@@ -1,6 +1,6 @@
 ---
 - name: Kubelet | reload systemd
-  systemd_service:
+  systemd:
     daemon_reload: true
   listen: Node | restart kubelet
 

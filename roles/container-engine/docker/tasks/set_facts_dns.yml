@@ -21,9 +21,9 @@
   shell: set -o pipefail && grep "^nameserver" /etc/resolv.conf | sed -r 's/^nameserver\s*([^#\s]+)\s*(#.*)?/\1/'
   args:
     executable: /bin/bash
-  changed_when: false
+  changed_when: False
   register: system_nameservers
-  check_mode: false
+  check_mode: no
 
 - name: Check system search domains
   # noqa risky-shell-pipe - if resolf.conf has no search domain, grep will exit 1 which would force us to add failed_when: false
@@ -31,9 +31,9 @@
   shell: grep "^search" /etc/resolv.conf | sed -r 's/^search\s*([^#]+)\s*(#.*)?/\1/'
   args:
     executable: /bin/bash
-  changed_when: false
+  changed_when: False
   register: system_search_domains
-  check_mode: false
+  check_mode: no
 
 - name: Add system nameservers to docker options
   set_fact:

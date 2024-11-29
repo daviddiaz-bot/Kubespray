@@ -1,8 +1,8 @@
 ---
 - name: Prepare Hypervisor to later install kubespray VMs
   hosts: localhost
-  gather_facts: false
-  become: true
+  gather_facts: False
+  become: yes
   vars:
     bootstrap_os: none
   roles:

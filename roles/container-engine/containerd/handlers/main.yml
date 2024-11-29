@@ -1,11 +1,11 @@
 ---
 - name: Containerd | restart containerd
-  systemd_service:
+  systemd:
     name: containerd
     state: restarted
-    enabled: true
-    daemon-reload: true
-    masked: false
+    enabled: yes
+    daemon-reload: yes
+    masked: no
   listen: Restart containerd
 
 - name: Containerd | wait for containerd

@@ -1,6 +1,6 @@
 ---
 - name: Kubeadm | reload systemd
-  systemd_service:
+  systemd:
     daemon_reload: true
   listen: Kubeadm | restart kubelet
 

@@ -6,6 +6,6 @@
 
 - name: Teardown disks in heketi
   hosts: heketi-node
-  become: true
+  become: yes
   roles:
     - { role: tear-down-disks }

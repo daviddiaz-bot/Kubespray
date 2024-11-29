@@ -33,18 +33,22 @@ spec:
         image: {{ node_feature_discovery_image_repo }}:{{ node_feature_discovery_image_tag }}
         imagePullPolicy: IfNotPresent
         livenessProbe:
-          grpc:
-            port: 8082
+          exec:
+            command:
+            - "/usr/bin/grpc_health_probe"
+            - "-addr=:8080"
           initialDelaySeconds: 10
           periodSeconds: 10
         readinessProbe:
-          grpc:
-            port: 8082
+          exec:
+            command:
+            - "/usr/bin/grpc_health_probe"
+            - "-addr=:8080"
           initialDelaySeconds: 5
           periodSeconds: 10
           failureThreshold: 10
         ports:
-        - containerPort: 8082
+        - containerPort: 8080
           name: grpc
         - containerPort: 8081
           name: metrics

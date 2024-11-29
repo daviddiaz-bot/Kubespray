@@ -3,6 +3,6 @@ addusers:
   - name: kube
     comment: "Kubernetes user"
     shell: /sbin/nologin
-    system: true
+    system: yes
     group: "{{ kube_cert_group }}"
-    create_home: false
+    create_home: no

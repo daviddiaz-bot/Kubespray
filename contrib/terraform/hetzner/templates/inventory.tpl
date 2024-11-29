@@ -12,8 +12,8 @@ ${list_master}
 ${list_worker}
 
 [k8s_cluster:children]
-kube_control_plane
-kube_node
+kube-master
+kube-node
 
 [k8s_cluster:vars]
 network_id=${network_id}

@@ -1,6 +1,6 @@
 ---
 - name: CRI-O | reload systemd
-  systemd_service:
+  systemd:
     daemon_reload: true
   listen: Restart crio
 
@@ -8,5 +8,5 @@
   service:
     name: crio
     state: restarted
-    enabled: true
+    enabled: yes
   listen: Restart crio
